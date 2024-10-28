@@ -33,6 +33,8 @@ async def main(event, context):
         logger.exception(ex)
         return {'status_code': 500,
                 'detail': 'Проблема с сервером, попробуйте позже'}
+    finally:
+        await session.close()
 
     return {'status_code': 200,
             'msg': 'Success'}
